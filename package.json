@@ -1,0 +1,30 @@
+{
+  "name": "mini-saas-api",
+  "version": "1.0.0",
+  "description": "Mini SaaS Academia API",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "node --watch --import=tsx src/server.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:studio": "prisma studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^7.8.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "pg": "^8.21.0",
+    "prisma": "^7.8.0",
+    "tsx": "^4.22.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.3",
+    "typescript": "^5.5.0"
+  }
+}
