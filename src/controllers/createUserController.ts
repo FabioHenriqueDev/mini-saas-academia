@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import * as UserService from '../services/user_service/userService'
+import * as UserService from '../services/user_service/createUserService'
 import { UserRepository } from "../repository/userRepository";
 import { UserErrors } from "../errors/user_errors/errors";
 
