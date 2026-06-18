@@ -11,15 +11,15 @@ const schemaUser = z.object({
     password: z.string().min(5, 'The name must have at least 5 characters.'),
     cpf: z.string().min(11, 'Invalid CPF'),
     personal: z.boolean()
-})
+});
 
-export const newUser = async (name: string, email: string, password: string, cpf: string, personal=false): Promise<User> => {
-    const user = { name, email, password, cpf, personal }
+export const biuldUser = async (name: string, email: string, password: string, cpf: string, personal=false): Promise<User> => {
+    const user = { name, email, password, cpf, personal };
     const validation = schemaUser.safeParse(user);
 
-    if(!validation.success) throw new UserErrors ('InvalidFieldsExeption', JSON.stringify(validation.error.format()), 400)
+    if(!validation.success) throw new UserErrors ('InvalidFieldsExeption', JSON.stringify(validation.error.format()), 400);
     
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     return {
         name,
@@ -28,25 +28,7 @@ export const newUser = async (name: string, email: string, password: string, cpf
         cpf,
         personal
     };
-}
+};
 
-
-export const updateUser = async (name: string, email: string, password: string, cpf: string, personal=false): Promise<User> => {
-    const userUpdated = { name, email, password, cpf, personal }
-    const validation = schemaUser.safeParse(userUpdated);
-
-    if(!validation.success) throw new UserErrors('InvalidFieldsExeption', JSON.stringify(validation.error.format()), 400)
-    
-    const hashedPassword = await bcrypt.hash(password, 10)
-
-    return {
-        name,
-        email,
-        password: hashedPassword,
-        cpf,
-        personal
-    };
-
-}
 
 

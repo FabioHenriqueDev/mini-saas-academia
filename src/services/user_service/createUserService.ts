@@ -10,8 +10,8 @@ export const createUser = async (name: string, email: string, password: string, 
     const existsCPF = await repository.findByCPF(cpf);
     if (existsCPF) throw new UserErrors ('CpfAlreadyExistsException', 'CPF already exists in database', 409);
 
-    const user = await UserEntities.newUser(name, email, password, cpf)
-    const userCreated = repository.save(user)
+    const user = await UserEntities.biuldUser(name, email, password, cpf)
+    const userCreated = repository.createUser(user)
     
     return userCreated
 }
