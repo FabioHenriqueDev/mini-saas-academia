@@ -4,7 +4,7 @@ import { User } from "../domain/entities/userEntities";
 type UserWithoutPassword = Omit<User, 'password'>;
 
 export type IUserRepository = {
-    findUserById(id: number): Promise<User | null>;
+    findUserById(id: number): Promise<UserWithoutPassword | null>;
     findByEmail(email: string): Promise<User | null>;
     findByCpf(cpf: string): Promise<UserWithoutPassword | null>;
     createUser(user: User): Promise<UserWithoutPassword>;
@@ -17,6 +17,15 @@ export const UserRepository: IUserRepository = {
         return await prisma.user.findUnique({
             where: {
                 id
+            },
+            select: {
+                id: true,
+                name: true, 
+                email: true,
+                cpf: true,
+                personal: true,
+                createdAt: true,
+                updatedAt: true
             }
         });
     },
