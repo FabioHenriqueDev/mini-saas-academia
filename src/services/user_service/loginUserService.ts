@@ -22,6 +22,7 @@ export const loginUser = async (email: string, password: string, repository: IUs
     if (!user) throw new UserErrors('IncorretCredentialsExeption', 'Incorret credentials', 401);
 
     const passwordIsValid = await bcrypt.compare(password, user.password);
+
     if(!passwordIsValid) throw new UserErrors('IncorretCredentialsExeption', 'Incorret credentials', 401);
     
     const token = generateToken({id: user.id, personal: user.personal})
@@ -37,15 +38,3 @@ export const loginUser = async (email: string, password: string, repository: IUs
         }
     }
 }
-
-
-// {
-//   "accessToken": "eyJhbGciOiJIUzI1NiIsIn...",
-//   "expiresIn": 3600,
-//   "user": {
-//     "id": "12983",
-//     "name": "Maria Silva",
-//     "email": "maria@email.com",
-//     "personal": "true" | "false"
-//   }
-// }
