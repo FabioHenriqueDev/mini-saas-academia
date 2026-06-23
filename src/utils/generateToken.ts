@@ -6,7 +6,7 @@ type ITokenPayload = {
 }
 
 export const generateToken = (payload: ITokenPayload): string => {
-  const secret = process.env.JWT_SECRET;
+    const secret = process.env.JWT_SECRET;
     if(!secret) throw new Error('JWT not configured');
 
     const token = jwt.sign(
