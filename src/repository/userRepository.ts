@@ -1,14 +1,15 @@
 import { prisma } from "../database/prisma";
-import { User } from "../domain/entities/userEntities";
+import { IUser } from "../domain/entities/userEntities";
+import { User } from '@prisma/client';
 
-type UserWithoutPassword = Omit<User, 'password'>;
+type UserWithoutPassword = Omit<IUser, 'password'>;
 
 export type IUserRepository = {
     findUserById(id: number): Promise<UserWithoutPassword | null>;
     findByEmail(email: string): Promise<User | null>;
     findByCpf(cpf: string): Promise<UserWithoutPassword | null>;
-    createUser(user: User): Promise<UserWithoutPassword>;
-    editUserById(id: number, user: User): Promise<UserWithoutPassword | null>;
+    createUser(user: IUser): Promise<UserWithoutPassword>;
+    editUserById(id: number, user: IUser): Promise<UserWithoutPassword | null>;
 }
 
 export const UserRepository: IUserRepository = {

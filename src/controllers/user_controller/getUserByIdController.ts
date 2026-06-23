@@ -1,8 +1,7 @@
 import type { RequestHandler } from "express";
-import { UserRepository } from "../repository/userRepository";
-import { UserErrors } from "../errors/user_errors/errors";
-import * as UserService from "../services/user_service/getUserByIdService";
-import { validateCPF } from "../validators/validateCpf";
+import { UserRepository } from "../../repository/userRepository";
+import { UserErrors } from "../../errors/user_errors/errors";
+import * as UserService from "../../services/user_service/getUserByIdService";
 
 
 export const getUserById: RequestHandler = async (req, res) => {

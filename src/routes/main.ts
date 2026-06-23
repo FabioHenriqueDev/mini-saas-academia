@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { createUser } from "../controllers/createUserController";
-import { editUserByID} from "../controllers/editUserByIdController";
-import { getUserByCpf } from "../controllers/getUserByCpfController";
-import { getUserById } from "../controllers/getUserByIdController";
+import { createUser } from "../controllers/user_controller/createUserController";
+import { editUserByID} from "../controllers/user_controller/editUserByIdController";
+import { getUserByCpf } from "../controllers/user_controller/getUserByCpfController";
+import { getUserById } from "../controllers/user_controller/getUserByIdController";
+import { loginUser } from "../controllers/user_controller/loginUserController";
 
 const router = Router();
 
@@ -11,6 +12,7 @@ router.get('/ping', (req, res) => {
 })
 
 router.post('/users', createUser);
+router.post('/users/login', loginUser)
 
 // Rota que vai exigir autenticação
 router.put('/users', editUserByID);

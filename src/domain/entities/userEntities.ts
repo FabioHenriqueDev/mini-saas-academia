@@ -3,7 +3,7 @@ import { cpf } from 'cpf-cnpj-validator';
 import bcrypt from 'bcrypt';
 import { UserErrors } from '../../errors/user_errors/errors';
 
-export type User = z.infer< typeof schemaUser>;
+export type IUser = z.infer< typeof schemaUser>;
 
 const schemaUser = z.object({
     name: z.string().min(4, 'The name must have at least 4 characters.'),
@@ -13,7 +13,7 @@ const schemaUser = z.object({
     personal: z.boolean()
 });
 
-export const biuldUser = async (name: string, email: string, password: string, cpf: string, personal=false): Promise<User> => {
+export const biuldUser = async (name: string, email: string, password: string, cpf: string, personal=false): Promise<IUser> => {
     const user = { name, email, password, cpf, personal };
     const validation = schemaUser.safeParse(user);
     const normalizedCpf = cpf.replace(/\D/g, '');
