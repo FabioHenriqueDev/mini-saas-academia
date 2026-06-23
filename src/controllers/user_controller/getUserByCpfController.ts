@@ -3,7 +3,7 @@ import { UserRepository } from "../../repository/userRepository";
 import { UserErrors } from "../../errors/user_errors/errors";
 import * as UserService from "../../services/user_service/getUserByCpfService";
 import { validateCPF } from "../../validators/validateCpf";
-
+ 
 
 export const getUserByCpf: RequestHandler = async (req, res) => {
     const { cpf } = req.params as { cpf: string };
