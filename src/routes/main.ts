@@ -12,8 +12,6 @@ const router = Router();
 // USERS:
     router.post('/users', createUser);
     router.post('/users/login', loginUser)
-
-    // Rota que vai exigir autenticação
     router.put('/users', verifyJwtMiddleware, editUserByID);
 
     // Rota que vai exigir autenticação e ser um personal training
