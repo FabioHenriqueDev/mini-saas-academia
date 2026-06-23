@@ -7,7 +7,7 @@ import { UserErrors } from "../../errors/user_errors/errors";
 // Rota que vai exigir autenticação
 export const editUserByID: RequestHandler = async (req, res) => {
     let { name, email, password, cpf } = req.body;
-    const id = 1;
+    const id = req.user.id;
 
     try{
         let user = await UserService.editUserById(id, name, email, password, cpf, UserRepository);

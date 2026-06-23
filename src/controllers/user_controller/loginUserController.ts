@@ -16,6 +16,7 @@ export const loginUser: RequestHandler = async (req, res) => {
             console.log(error)
             return res.status(error.statusCode).json({ error: error.message })
         } else {
+            console.log(error)
             return res.status(500).json({erro: error})
         }
     }
