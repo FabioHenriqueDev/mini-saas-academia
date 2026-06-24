@@ -11,15 +11,14 @@ const router = Router();
 
 // USERS:
     router.post('/users', createUser);
-    router.post('/users/login', loginUser)
+    router.post('/users/login', loginUser);
+
+    // Rota que vai exigir autenticação
     router.put('/users', verifyJwtMiddleware, editUserByID);
 
     // Rota que vai exigir autenticação e ser um personal training
-    router.get('/users/cpf/:cpf', getUserByCpf)
-
-    // Rota que vai exigir autenticação e ser um personal training
-    router.get('/users/:id', getUserById)
-
+    router.get('/users/cpf/:cpf', verifyJwtMiddlewarePersonal, getUserByCpf);
+    router.get('/users/:id', verifyJwtMiddlewarePersonal, getUserById);
 
 // EXERCICES:
 
