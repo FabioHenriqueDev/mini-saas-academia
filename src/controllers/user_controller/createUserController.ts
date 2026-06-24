@@ -9,14 +9,14 @@ export const createUser: RequestHandler = async (req, res) => {
 
     try{
         let user = await UserService.createUser(name, email, password, cpf, UserRepository);
-        res.status(201).json({sucess: true, user})
+        res.status(201).json({sucess: true, user});
     } catch(error) {
         if(error instanceof UserErrors ){
-            res.status(error.statusCode).json({ error: error.message })
-            console.log(error)
+            res.status(error.statusCode).json({ error: error.message });
+            console.log(error);
         } else {
-            res.status(500).json({ error })
-            console.log(error)
+            res.status(500).json({ error });
+            console.log(error);
         }
         
     }

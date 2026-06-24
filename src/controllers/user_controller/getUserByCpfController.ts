@@ -7,19 +7,19 @@ import { validateCPF } from "../../validators/validateCpf";
 
 export const getUserByCpf: RequestHandler = async (req, res) => {
     const { cpf } = req.params as { cpf: string };
-    const validate = validateCPF(cpf)
-    if (!validate) return res.status(400).json({'Error': "Invalid CPF"})
+    const validate = validateCPF(cpf);
+    if (!validate) return res.status(400).json({'Error': "Invalid CPF"});
 
     try{
         const user = await UserService.getUserByCpf(cpf, UserRepository);
-        return res.status(200).json({sucess: true, user})
+        return res.status(200).json({sucess: true, user});
     } catch(error) {
         if(error instanceof UserErrors ){
-            console.log(error)
-            return res.status(error.statusCode).json({ error: error.message })
+            console.log(error);
+            return res.status(error.statusCode).json({ error: error.message });
         } else {
-            res.status(500).json({ error })
-            console.log(error)
+            res.status(500).json({ error });
+            console.log(error);
         }
         
     }

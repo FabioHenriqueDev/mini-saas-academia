@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 
 type ITokenPayload = {
-    id: number
-    personal: boolean
-}
+    id: number;
+    personal: boolean;
+};
 
 export const generateToken = (payload: ITokenPayload): string => {
     const secret = process.env.JWT_SECRET;
@@ -13,9 +13,8 @@ export const generateToken = (payload: ITokenPayload): string => {
         payload,
         secret,
         { expiresIn: '1d' }
-    )
+    );
 
-    return token
-    
-}
+    return token;
+};
 

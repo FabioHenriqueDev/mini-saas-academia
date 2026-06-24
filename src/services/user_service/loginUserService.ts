@@ -25,7 +25,7 @@ export const loginUser = async (email: string, password: string, repository: IUs
 
     if(!passwordIsValid) throw new UserErrors('IncorretCredentialsExeption', 'Incorret credentials', 401);
     
-    const token = generateToken({id: user.id, personal: user.personal})
+    const token = generateToken({id: user.id, personal: user.personal});
 
     return {
         token,
@@ -36,5 +36,5 @@ export const loginUser = async (email: string, password: string, repository: IUs
             email: user.email,
             personal: user.personal
         }
-    }
-}
+    };
+};

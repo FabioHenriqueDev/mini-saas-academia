@@ -8,16 +8,16 @@ export const loginUser: RequestHandler = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const loginInfo = await LoginService.loginUser(email, password, UserRepository)
-        return res.status(200).json(loginInfo)
+        const loginInfo = await LoginService.loginUser(email, password, UserRepository);
+        return res.status(200).json(loginInfo);
 
     } catch(error) {
         if(error instanceof UserErrors){
-            console.log(error)
-            return res.status(error.statusCode).json({ error: error.message })
+            console.log(error);
+            return res.status(error.statusCode).json({ error: error.message });
         } else {
-            console.log(error)
-            return res.status(500).json({erro: error})
+            console.log(error);
+            return res.status(500).json({erro: error});
         }
     }
 }
