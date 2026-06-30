@@ -21,16 +21,16 @@ model User {
 }
 
 model Exercise {
-  id            Int      @id @default(autoincrement())
-  exercise_name String
-  descricao     String
-  series        Int
-  repeticoes    Int
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  id_usuario    Int
-  usuario       User     @relation("ClientExercises", fields: [id_usuario], references: [id]) 
-  id_personal   Int
-  personal      User     @relation("PersonalExercises", fields: [id_personal], references: [id]) 
+  id              Int      @id @default(autoincrement())
+  exercise_name   String
+  description     String?
+  series          Int
+  repetitions     Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  id_user         Int
+  user            User     @relation("ClientExercises", fields: [id_user], references: [id]) 
+  id_personal     Int
+  personal        User     @relation("PersonalExercises", fields: [id_personal], references: [id]) 
   @@map("exercises")
 }

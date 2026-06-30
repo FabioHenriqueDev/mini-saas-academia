@@ -1,4 +1,4 @@
-import { UserErrors } from "../../errors/user_errors/errors";
+import { UserErrors } from "../../errors/userErrors";
 import { IUserRepository } from "../../repository/userRepository";
 
 export const getUserById = async (id: number, repository: IUserRepository) => {

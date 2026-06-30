@@ -1,7 +1,7 @@
 import type { RequestHandler } from "express";
 import * as UserService from '../../services/user_service/editUserByIdService'
 import { UserRepository } from "../../repository/userRepository";
-import { UserErrors } from "../../errors/user_errors/errors";
+import { UserErrors } from "../../errors/userErrors";
 
 
 export const editUserByID: RequestHandler = async (req, res) => {

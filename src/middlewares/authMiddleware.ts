@@ -5,8 +5,8 @@ import z from 'zod';
 type IJwtPayload = z.infer<typeof jwtPayloadSchema>
 
 const jwtPayloadSchema = z.object({
-    id: z.number(),
-    personal: z.boolean()
+    id: z.number('The id needed to be a number.'),
+    personal: z.boolean('The personal needed to be a boolean.')
 });
 
 

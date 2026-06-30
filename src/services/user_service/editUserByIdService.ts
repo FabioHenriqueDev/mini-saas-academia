@@ -1,5 +1,5 @@
 import * as UserEntities from "../../domain/entities/userEntities";
-import { UserErrors } from "../../errors/user_errors/errors";
+import { UserErrors } from "../../errors/userErrors";
 import { IUserRepository } from "../../repository/userRepository";
 
 
