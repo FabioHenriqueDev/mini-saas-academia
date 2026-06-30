@@ -1,5 +1,5 @@
 import z from 'zod';
-import { UserErrors } from '../errors/user_errors/errors';
+import { UserErrors } from '../errors/userErrors';
 
 export type UserInputLogin = z.infer<typeof loginInput>
 

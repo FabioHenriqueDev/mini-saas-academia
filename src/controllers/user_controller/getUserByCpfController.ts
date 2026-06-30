@@ -1,6 +1,6 @@
 import type { RequestHandler } from "express";
 import { UserRepository } from "../../repository/userRepository";
-import { UserErrors } from "../../errors/user_errors/errors";
+import { UserErrors } from "../../errors/userErrors";
 import * as UserService from "../../services/user_service/getUserByCpfService";
 import { validateCPF } from "../../validators/validateCpf";
  

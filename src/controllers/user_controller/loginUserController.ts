@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { UserErrors } from "../../errors/user_errors/errors";
+import { UserErrors } from "../../errors/userErrors";
 import * as LoginService from '../../services/user_service/loginUserService'
 import { UserRepository } from "../../repository/userRepository";
 

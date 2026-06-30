@@ -6,6 +6,7 @@ import { getUserById } from "../controllers/user_controller/getUserByIdControlle
 import { loginUser } from "../controllers/user_controller/loginUserController";
 import { verifyJwtMiddleware } from "../middlewares/authMiddleware";
 import { verifyJwtMiddlewarePersonal } from "../middlewares/authMiddlewaresPersonal";
+import { createExercise } from "../controllers/exercise_controller/createExerciseController";
 
 const router = Router();
 
@@ -22,5 +23,6 @@ const router = Router();
 
 // EXERCICES:
 
+    router.post('/exercises', verifyJwtMiddlewarePersonal, createExercise)
 
 export default router; 

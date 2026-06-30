@@ -1,4 +1,4 @@
-import { UserErrors } from "../../errors/user_errors/errors";
+import { UserErrors } from "../../errors/userErrors";
 import { IUserRepository } from "../../repository/userRepository";
 
 export const getUserByCpf = async (cpf: string, repository: IUserRepository) => {
