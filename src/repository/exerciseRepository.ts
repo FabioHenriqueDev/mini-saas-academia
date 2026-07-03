@@ -1,8 +1,11 @@
 import { prisma } from "../database/prisma";
-import { Exercise } from "../domain/entities/exerciseEntities";
+import { Exercise as ExerciseEntities } from "../domain/entities/exerciseEntities";
+import { Exercise } from '@prisma/client';
 
 export type IExerciseRepository = {
-    createExercise(exercise: Exercise): Promise<Exercise>
+    createExercise(exercise: ExerciseEntities): Promise<ExerciseEntities>
+    deleteExerciseById(id: number): Promise<Exercise>
+    findExerciseById(id: number): Promise<Exercise | null>
 }
 
 export const ExerciseRepository: IExerciseRepository = {
@@ -22,4 +25,40 @@ export const ExerciseRepository: IExerciseRepository = {
             }
         });
     },
+
+    deleteExerciseById: async (id) => {
+    return prisma.exercise.delete({
+        where: {
+            id
+        },
+        select: {
+                id: true,
+                exercise_name: true,
+                series: true,
+                createdAt: true,
+                updatedAt: true,
+                id_personal: true,
+                id_user: true,
+                description: true,
+                repetitions: true
+            }
+        });
+    },
+
+    findExerciseById: async (id) => {
+        return prisma.exercise.findUnique({
+            where: { id },
+            select: {
+                id: true,
+                exercise_name: true,
+                series: true,
+                createdAt: true,
+                updatedAt: true,
+                id_personal: true,
+                id_user: true,
+                description: true,
+                repetitions: true
+            }
+        })
+    }
 }
