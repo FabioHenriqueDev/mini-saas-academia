@@ -3,21 +3,16 @@ import { UserErrors } from "../../errors/userErrors";
 import { AuthorizationError } from "../../errors/authorizationError";
 import * as ExerciseService from '../../services/exercise_services/deleteExerciseById'
 import { ExerciseRepository } from "../../repository/exerciseRepository";
-import { UserRepository } from "../../repository/userRepository";
-
 
 
 export const deleteExerciseById: RequestHandler = async (req, res) => {
-   
     try{
-         const { id } = req.params as { id: string};
-        const idExercise = Number(id)
+        const { id } = req.body
         console.log(id)
-        const { id: idUser } = req.user 
-
-        const exerciseDeleted = await ExerciseService.deleteExerciseById(idExercise, ExerciseRepository, UserRepository, idUser)
         
-        res.status(200).json({sucess: true, exerciseDeleted});
+        const exerciseDeleted = await ExerciseService.deleteExerciseById(id, ExerciseRepository)
+        
+        res.status(200).json({sucess: true, exerciseDeleted})
     } catch(error) {
         if(error instanceof AuthorizationError || error instanceof UserErrors){
             res.status(error.statusCode).json({ error: error.message });
