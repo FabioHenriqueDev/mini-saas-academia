@@ -6,6 +6,7 @@ export type IExerciseRepository = {
     createExercise(exercise: ExerciseEntities): Promise<ExerciseEntities>
     deleteExerciseById(id: number): Promise<Exercise>
     findExerciseById(id: number): Promise<Exercise | null>
+    editExerciseById(id: number, exercise: ExerciseEntities): Promise<Exercise>
 }
 
 export const ExerciseRepository: IExerciseRepository = {
@@ -60,5 +61,19 @@ export const ExerciseRepository: IExerciseRepository = {
                 repetitions: true
             }
         })
+    },
+
+    editExerciseById: async (id, exercise) => {
+        return prisma.exercise.update({
+        where: { id },
+        data: {
+            exercise_name: exercise.exercise_name,
+            series: exercise.series,
+            repetitions: exercise.repetitions,
+            description: exercise.description,
+            id_personal: exercise.id_personal,
+            id_user: exercise.id_user
+        }
+    })
     }
 }

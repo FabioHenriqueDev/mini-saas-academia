@@ -1,5 +1,5 @@
 import z from 'zod';
-import { AuthorizationError } from '../../errors/authorizationError';
+import { ExercisesErrors } from '../../errors/exerciseErrors';
 
 export type Exercise = z.infer<typeof schemaExercise>;
 
@@ -16,7 +16,7 @@ export const biuldExercise = (id_user: number, id_personal: number, exercise_nam
     const exercise = { id_user, id_personal, exercise_name, description, series, repetitions };
 
     const validation = schemaExercise.safeParse(exercise);
-    if(!validation.success) throw new AuthorizationError('InvalidFieldsExeption', JSON.stringify(validation.error.format()), 400);
+    if(!validation.success) throw new ExercisesErrors('InvalidFieldsExeption', JSON.stringify(validation.error.format()), 400);
 
     return exercise;
 }

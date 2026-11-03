@@ -8,6 +8,7 @@ import { verifyJwtMiddleware } from "../middlewares/authMiddleware";
 import { verifyJwtMiddlewarePersonal } from "../middlewares/authMiddlewaresPersonal";
 import { createExercise } from "../controllers/exercise_controller/createExerciseController";
 import { deleteExerciseById } from "../controllers/exercise_controller/deleteExerciseByIdController";
+import { editExercisebyID } from "../controllers/exercise_controller/editExerciseController";
 
 const router = Router();
 
@@ -23,8 +24,8 @@ const router = Router();
     router.get('/users/:id', verifyJwtMiddlewarePersonal, getUserById);
 
 // EXERCICES:
-
     router.post('/exercises', verifyJwtMiddlewarePersonal, createExercise)
     router.delete('/exercises/:id', verifyJwtMiddlewarePersonal, deleteExerciseById)
+    router.put('/exercises/:id', verifyJwtMiddlewarePersonal, editExercisebyID)
 
 export default router; 
